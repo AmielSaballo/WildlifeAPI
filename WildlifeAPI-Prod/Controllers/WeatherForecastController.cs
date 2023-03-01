@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace WildlifeAPI_Prod.Controllers
+namespace WildlifeAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

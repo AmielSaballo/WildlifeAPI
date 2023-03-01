@@ -6,17 +6,17 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WildlifeAPI.Models;
-using WildlifeAPI_Prod.Data;
+using WildlifeAPI.Data;
 
-namespace WildlifeAPI_Prod.Controllers
+namespace WildlifeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class AnimalsController : ControllerBase
     {
-        private readonly WildlifeAPI_ProdContext _context;
+        private readonly WildlifeAPIContext _context;
 
-        public AnimalsController(WildlifeAPI_ProdContext context)
+        public AnimalsController(WildlifeAPIContext context)
         {
             _context = context;
         }
@@ -88,7 +88,7 @@ namespace WildlifeAPI_Prod.Controllers
         {
           if (_context.Animals == null)
           {
-              return Problem("Entity set 'WildlifeAPI_ProdContext.Animals'  is null.");
+              return Problem("Entity set 'WildlifeAPIContext.Animals'  is null.");
           }
             _context.Animals.Add(animals);
             await _context.SaveChangesAsync();

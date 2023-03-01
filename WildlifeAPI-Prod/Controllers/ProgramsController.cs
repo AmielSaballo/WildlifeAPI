@@ -5,62 +5,62 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WildlifeAPI.Models;
 using WildlifeAPI.Data;
+using WildlifeAPI.Models;
 
 namespace WildlifeAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VolunteersController : ControllerBase
+    public class ProgramsController : ControllerBase
     {
         private readonly WildlifeAPIContext _context;
 
-        public VolunteersController(WildlifeAPIContext context)
+        public ProgramsController(WildlifeAPIContext context)
         {
             _context = context;
         }
 
-        // GET: api/Volunteers
+        // GET: api/Programs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Volunteers>>> GetVolunteers()
+        public async Task<ActionResult<IEnumerable<Programs>>> GetProgram()
         {
-          if (_context.Volunteers == null)
+          if (_context.Programs == null)
           {
               return NotFound();
           }
-            return await _context.Volunteers.ToListAsync();
+            return await _context.Programs.ToListAsync();
         }
 
-        // GET: api/Volunteers/5
+        // GET: api/Programs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Volunteers>> GetVolunteers(int id)
+        public async Task<ActionResult<Programs>> GetPrograms(int id)
         {
-          if (_context.Volunteers == null)
+          if (_context.Programs == null)
           {
               return NotFound();
           }
-            var volunteers = await _context.Volunteers.FindAsync(id);
+            var programs = await _context.Programs.FindAsync(id);
 
-            if (volunteers == null)
+            if (programs == null)
             {
                 return NotFound();
             }
 
-            return volunteers;
+            return programs;
         }
 
-        // PUT: api/Volunteers/5
+        // PUT: api/Programs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutVolunteers(int id, Volunteers volunteers)
+        public async Task<IActionResult> PutPrograms(int id, Programs programs)
         {
-            if (id != volunteers.id)
+            if (id != programs.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(volunteers).State = EntityState.Modified;
+            _context.Entry(programs).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace WildlifeAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!VolunteersExists(id))
+                if (!ProgramsExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace WildlifeAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Volunteers
+        // POST: api/Programs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Volunteers>> PostVolunteers(Volunteers volunteers)
+        public async Task<ActionResult<Programs>> PostPrograms(Programs programs)
         {
-          if (_context.Volunteers == null)
+          if (_context.Programs == null)
           {
-              return Problem("Entity set 'WildlifeAPIContext.Volunteers'  is null.");
+              return Problem("Entity set 'WildlifeAPIContext.Program'  is null.");
           }
-            _context.Volunteers.Add(volunteers);
+            _context.Programs.Add(programs);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetVolunteers", new { id = volunteers.id }, volunteers);
+            return CreatedAtAction("GetPrograms", new { id = programs.id }, programs);
         }
 
-        // DELETE: api/Volunteers/5
+        // DELETE: api/Programs/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteVolunteers(int id)
+        public async Task<IActionResult> DeletePrograms(int id)
         {
-            if (_context.Volunteers == null)
+            if (_context.Programs == null)
             {
                 return NotFound();
             }
-            var volunteers = await _context.Volunteers.FindAsync(id);
-            if (volunteers == null)
+            var programs = await _context.Programs.FindAsync(id);
+            if (programs == null)
             {
                 return NotFound();
             }
 
-            _context.Volunteers.Remove(volunteers);
+            _context.Programs.Remove(programs);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool VolunteersExists(int id)
+        private bool ProgramsExists(int id)
         {
-            return (_context.Volunteers?.Any(e => e.id == id)).GetValueOrDefault();
+            return (_context.Programs?.Any(e => e.id == id)).GetValueOrDefault();
         }
     }
 }

@@ -2,7 +2,7 @@
   "dependencies": {
     "mssql1": {
       "type": "mssql.local",
-      "connectionId": "ConnectionStrings:WildlifeAPI_ProdContext"
+      "connectionId": "ConnectionStrings:WildlifeAPIContext"
     }
   }
 }

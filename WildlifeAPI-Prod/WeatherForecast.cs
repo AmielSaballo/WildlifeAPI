@@ -1,4 +1,4 @@
-namespace WildlifeAPI_Prod
+namespace WildlifeAPI
 {
     public class WeatherForecast
     {

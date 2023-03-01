@@ -1,12 +1,12 @@
-﻿using System.Reflection.Metadata;
-
-namespace WildlifeAPI.Models
+﻿namespace WildlifeAPI.Models
 {
-    public class Services
+    public class Programs
     {
         public int id { get; set; }
-        public string? serviceName { get; set; }
-        public string? serviceDescription { get; set; }
+        public string? programName { get; set; }
+        public string? programSummary { get; set; }
+        public string? programDescription { get; set; }
+        public string? programAgency { get; set; }
         public string? location { get; set; }
         public string? phoneNumber { get; set; }
         public string? email { get; set; }

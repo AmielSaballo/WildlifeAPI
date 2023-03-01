@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using WildlifeAPI_Prod.Data;
+using WildlifeAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<WildlifeAPI_ProdContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WildlifeAPI_ProdContext") ?? throw new InvalidOperationException("Connection string 'WildlifeAPI_ProdContext' not found.")));
+builder.Services.AddDbContext<WildlifeAPIContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WildlifeAPIContext") ?? throw new InvalidOperationException("Connection string 'WildlifeAPIContext' not found.")));
 
 // Add services to the container.
 
