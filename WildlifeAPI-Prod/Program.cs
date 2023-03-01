@@ -1,11 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WildlifeAPI.Data;
+using WildlifeAPI_Prod.Data.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<WildlifeAPIContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("WildlifeAPIContext") ?? throw new InvalidOperationException("Connection string 'WildlifeAPIContext' not found.")));
 
 // Add services to the container.
+builder.Services.AddScoped<IBlogsService, BlogsService>();
+builder.Services.AddScoped<IProgramsService, ProgramsService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

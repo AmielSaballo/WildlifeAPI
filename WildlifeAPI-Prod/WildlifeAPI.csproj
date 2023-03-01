@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>WildlifeAPI_Prod</RootNamespace>
+    <UserSecretsId>18811191-4b98-4e22-9a5c-6b872cf672e4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

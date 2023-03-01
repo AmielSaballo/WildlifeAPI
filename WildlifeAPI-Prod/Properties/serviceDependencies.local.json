@@ -3,6 +3,15 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:WildlifeAPIContext"
+    },
+    "secrets1": {
+      "type": "secrets.user"
+    },
+    "mssql2": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/amiel-wwph-dbserver/databases/amiel-wwph-db",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:Wildlifedb"
     }
   }
 }
