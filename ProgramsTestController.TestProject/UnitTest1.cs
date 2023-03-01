@@ -1,6 +1,7 @@
 using Moq;
 using WildlifeAPI.Controllers;
 using WildlifeAPI.Models;
+using WildlifeAPI_Prod.Controllers;
 using WildlifeAPI_Prod.Data.Services;
 
 namespace ProgramsTestController.TestProject
@@ -20,9 +21,9 @@ namespace ProgramsTestController.TestProject
         {
             var programList = new Programs() { id= 1, programName="Test", programSummary="This is a", programDescription="This is a test", phoneNumber="1111111" };
             service.Setup(x => x.GetById(1)).Returns(Task.Run(() => programList));
-            var programsController = new ProgramsController(service.Object);
+            var programsController = new TestProgramsController(service.Object);
 
-            var result = programsController.GetPrograms(1);
+            var result = programsController.GetProgramsById(1);
 
             Assert.NotNull(result);
         }
@@ -32,9 +33,9 @@ namespace ProgramsTestController.TestProject
         {
             var programList = CreateProgramList();
             service.Setup(x => x.GetAll()).Returns(Task.Run(() => programList));
-            var programsController = new ProgramsController(service.Object);
+            var programsController = new TestProgramsController(service.Object);
 
-            var result = programsController.GetPrograms();
+            var result = programsController.GetAllPrograms();
 
             Assert.NotNull(result);
         }

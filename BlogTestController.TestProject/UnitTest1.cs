@@ -3,6 +3,7 @@ using Moq;
 using WildlifeAPI.Controllers;
 using WildlifeAPI.Data;
 using WildlifeAPI.Models;
+using WildlifeAPI_Prod.Controllers;
 using WildlifeAPI_Prod.Data.Services;
 
 namespace BlogTestController.TestProject
@@ -24,9 +25,9 @@ namespace BlogTestController.TestProject
             //arrange
             var blogList = new Blogs() { id = 1, blogTitle = "Test", blogSummary = "This is a", blogContent = "This is a test", blogAuthor = "Amiel", postedDate = "3 March 2023" };
             _services.Setup(x => x.GetById(1)).Returns(Task.Run(() => blogList)); 
-            var blogsController = new BlogsController(_services.Object);
+            var blogsController = new TestBlogsController(_services.Object);
 
-            var result = blogsController.GetBlogs();
+            var result = blogsController.GetBlogsById(1);
 
             Assert.NotNull(result);
         }
@@ -37,9 +38,9 @@ namespace BlogTestController.TestProject
             //arrange
             var blogList = CreateBlogsList();
             _services.Setup(x => x.GetAll()).Returns(Task.Run(() => blogList));
-            var blogsController = new BlogsController(_services.Object);
+            var blogsController = new TestBlogsController(_services.Object);
 
-            var result = blogsController.GetBlogs();
+            var result = blogsController.GetAllBlogs();
 
             Assert.NotNull(result);
         }
