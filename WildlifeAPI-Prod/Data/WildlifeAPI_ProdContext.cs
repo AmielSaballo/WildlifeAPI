@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using WildlifeAPI.Models;
 using WildlifeAPI.Models;
+using WildlifeAPI_Prod.Models;
 
 namespace WildlifeAPI.Data
 {
@@ -22,5 +23,7 @@ namespace WildlifeAPI.Data
         public DbSet<WildlifeAPI.Models.Volunteers> Volunteers { get; set; } = default!;
 
         public DbSet<WildlifeAPI.Models.Programs> Programs { get; set; } = default!;
+
+        public DbSet<WildlifeAPI_Prod.Models.Contacts> Contacts { get; set; } = default!;
     }
 }
