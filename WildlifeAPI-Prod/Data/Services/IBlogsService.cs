@@ -1,4 +1,5 @@
-﻿using WildlifeAPI.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using WildlifeAPI.Models;
 
 namespace WildlifeAPI_Prod.Data.Services
 {

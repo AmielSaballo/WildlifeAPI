@@ -4,10 +4,11 @@ using WildlifeAPI.Data;
 using WildlifeAPI_Prod.Data.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<WildlifeAPIContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("WildlifeAPIContext") ?? throw new InvalidOperationException("Connection string 'WildlifeAPIContext' not found.")));
+//builder.Services.AddDbContext<WildlifeAPIContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("WildlifeAPIContext") ?? throw new InvalidOperationException("Connection string 'WildlifeAPIContext' not found.")));
 
 // Add services to the container.
+builder.Services.AddDbContext<WildlifeAPIContext>();
 builder.Services.AddScoped<IBlogsService, BlogsService>();
 builder.Services.AddScoped<IProgramsService, ProgramsService>();
 

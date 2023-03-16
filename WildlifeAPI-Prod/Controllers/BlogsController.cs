@@ -24,8 +24,6 @@ namespace WildlifeAPI.Controllers
             _context = context;
         }
 
-
-
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Blogs>>> GetBlogs()
         {
